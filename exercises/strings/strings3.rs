@@ -3,21 +3,23 @@
 // Execute `rustlings hint strings3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    ???
+    let trimmed = input.trim(); // 使用 trim 方法去除两端的空白
+    String::from(trimmed)
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There's multiple ways to do this!
-    ???
+    let composed = format!("{} world!", input); // 使用 format! 宏来组合字符串
+    composed
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons"!
-    ???
+    let replaced = input.replace("cars", "balloons"); // 使用 replace 方法替换子字符串
+    replaced
 }
 
 #[cfg(test)]
