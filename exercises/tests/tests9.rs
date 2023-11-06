@@ -9,12 +9,16 @@ mod foo {
     pub fn my_demo_function(a: u32) -> u32 {
         a
     }
+    pub fn my_demo_function_alias(a: u32) -> u32 {
+        a
+    }
 }
  
 #[cfg(test)]
 mod tests {
     use super::*;
     use foo::my_demo_function;
+    use foo::my_demo_function_alias;
     #[test]
     fn test_success() {
 
