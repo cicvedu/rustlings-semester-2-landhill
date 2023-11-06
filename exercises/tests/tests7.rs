@@ -12,8 +12,6 @@ mod tests {
             .as_secs();
         let s = std::env::var("TEST_FOO").unwrap();
         let e: u64 = s.parse().unwrap();
-        println!("Error: {:?}", e);
-        println!("Timestamp: {:?}", timestamp);
         assert!(timestamp >= e && timestamp < e + 10);
     }
 }

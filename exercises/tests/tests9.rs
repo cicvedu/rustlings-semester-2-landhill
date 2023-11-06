@@ -1,14 +1,12 @@
-
- 
 extern "Rust" {
-    fn my_demo_function(a: u32) -> u32;
+    //fn my_demo_function(a: u32) -> u32;
     #[link_name = "my_demo_function"]
     fn my_demo_function_alias(a: u32) -> u32;
 }
  
-mod Foo {
+mod foo {
    
-    fn my_demo_function(a: u32) -> u32 {
+    pub fn my_demo_function(a: u32) -> u32 {
         a
     }
 }
@@ -16,13 +14,18 @@ mod Foo {
 #[cfg(test)]
 mod tests {
     use super::*;
- 
+    use foo::my_demo_function;
     #[test]
     fn test_success() {
 
         unsafe {
-            my_demo_function(123);
-            my_demo_function_alias(456);
+            let result1 = my_demo_function(123);
+            let result2 = my_demo_function_alias(456);
+
+            // 使用 assert_eq! 来验证返回值是否符合预期
+            assert_eq!(result1, 123);
+            assert_eq!(result2, 456)
         }
     }
+
 }

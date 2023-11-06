@@ -6,7 +6,7 @@ fn main() {
     // In tests7, we should set up an environment variable
     // called `TEST_FOO`. Print in the standard output to let
     // Cargo do it.
-    let mut timestamp = std::time::SystemTime::now()
+    let timestamp = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap()
         .as_secs(); // What's the use of this timestamp here?
@@ -14,16 +14,20 @@ fn main() {
     //     "cargo:TEST_FOO={}",
     //     timestamp
     // );
-    let s = std::env::var("TEST_FOO").unwrap();
-    let e: u64 = s.parse().unwrap();
-    if timestamp<e{
-        timestamp=e;
-    }
-    if timestamp>e{
-        timestamp=e;
-    }
-    println!("cargo:TEST_FOO={}", timestamp);
+    // let s = std::env::var("TEST_FOO").unwrap();
+    // let e: u64 = s.parse().unwrap();
+    // if timestamp<e{
+    //     timestamp=e;
+    // }
+    // if timestamp>e{
+    //     timestamp=e;
+    // }
+    // println!("cargo:TEST_FOO={}", timestamp);
+    let range_start = timestamp;
+    let range_end = timestamp + 10;
 
+    // Set the TEST_FOO environment variable with the range information.
+    println!("cargo:rustc-env=TEST_FOO={}", range_start);
     // In tests8, we should enable "pass" feature to make the
     // testcase return early. Fill in the command to tell
     // Cargo about that.
